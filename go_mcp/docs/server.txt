@@ -1,0 +1,42 @@
+## Copyright 2025 CannonJunior
+# This file is part of [project name], and is released under the "MIT License Agreement".
+# Please see the LICENSE.md file that should have been included as part of this package.
+
+# The is the Claude explainer text from creating server.go
+# Created: 2025.06.15
+
+I'll help you convert this FastMCP Python program to Go. Since there isn't a direct Go equivalent of FastMCP, I'll create a Go program that implements similar MCP (Model Context Protocol) functionality using Go's standard libraries and common patterns.
+
+I've converted your Python FastMCP program to Go. Here are the key differences and features:
+Structure Changes:
+
+Created a MCPServer struct to manage resources and prompts
+Used Go's net/http package for HTTP server functionality
+Implemented pattern matching for resource URLs using regular expressions
+
+Key Features:
+
+Resource Handler: Matches patterns like file://hello/{name} and extracts parameters
+Prompt Handler: Handles named prompts with optional parameters
+JSON Responses: Returns structured JSON responses with content, parameters, and error handling
+HTTP Endpoints:
+
+/resource/hello/{name} for resources
+/prompt/greet?name=value for prompts
+/health for server health checks
+
+
+
+Usage Examples:
+
+Resource: GET http://localhost:8080/resource/hello/John
+Prompt: GET http://localhost:8080/prompt/greet?name=Alice
+Health: GET http://localhost:8080/health
+
+To run this Go program:
+
+Save it as main.go
+Run go run main.go
+The server will start on port 8080
+
+The Go version maintains the same functionality as your Python original while following Go idioms and patterns. The async nature of the Python version is handled by Go's built-in goroutine-based HTTP server.

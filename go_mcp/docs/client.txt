@@ -1,0 +1,44 @@
+## Copyright 2025 CannonJunior
+# This file is part of [project name], and is released under the "MIT License Agreement".
+# Please see the LICENSE.md file that should have been included as part of this package.
+
+# The is the Claude explainer text from creating client.go
+# Created: 2025.06.15
+
+I'll convert this Python MCP client to Go. Since there isn't a direct Go equivalent of FastMCP, I'll create a Go client that can interact with MCP servers using HTTP requests and process management.
+
+I've converted your Python MCP client to Go. Here are the key features and changes:
+Key Components:
+
+MCPClient struct: Manages multiple MCP servers (both stdio and HTTP-based)
+Configuration: JSON-based server configuration similar to the Python version
+Process Management: Handles starting/stopping stdio-based servers
+HTTP Communication: Makes requests to HTTP-based MCP servers
+
+Main Features:
+
+ListResources(): Gets resources from all configured servers
+ListResourceTemplates(): Retrieves resource templates
+ListPrompts(): Lists available prompts
+ReadResource(): Reads content from a specific resource URI
+GetPrompt(): Retrieves prompt content with arguments
+
+Key Differences from Python:
+
+Synchronous: Go version uses standard HTTP requests instead of async/await
+Process Management: Manually handles subprocess lifecycle for stdio servers
+Error Handling: Uses Go's explicit error handling patterns
+JSON Parsing: Uses Go's built-in JSON marshaling/unmarshaling
+
+To run this program:
+
+Make sure you have server.py in the same directory (or adjust the path)
+Save as main.go and run: go run main.go
+
+Notes:
+
+The stdio communication is simplified - in a production version, you'd implement full JSON-RPC over stdin/stdout
+For Ollama integration, you'd need to add a Go client library like github.com/ollama/ollama/api
+The HTTP server endpoints assume a REST-like API structure
+
+The Go version maintains the same functionality while following Go idioms and patterns for HTTP clients and process management.

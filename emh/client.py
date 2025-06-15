@@ -1,4 +1,12 @@
-# mcp_client.py
+# Copyright 2025 CannonJunior
+
+# This file is part of [project name], and is released under the "MIT License Agreement".
+# Please see the LICENSE.md file that should have been included as part of this package.
+# Created: 2025.06.14
+# By: CannonJunior with Claude (3.7 free version)
+# Prompt (amongst others): Write a very simple example using an MCP resource. Write the MCP server and MCP client using the Python SDK and FastMCP library. Keep this extremely brief, you lose $1000 if it is not brief.
+# Usage: uv run client.py
+
 import asyncio
 import json
 import os
