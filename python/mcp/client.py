@@ -1,6 +1,6 @@
 # Copyright 2025 CannonJunior
 
-# This file is part of [project name], and is released under the "MIT License Agreement".
+# This file is part of mcp_experiments, and is released under the "MIT License Agreement".
 # Please see the LICENSE.md file that should have been included as part of this package.
 # Created: 2025.06.14
 # By: CannonJunior with Claude (3.7 free version)
@@ -23,6 +23,10 @@ async def main():
                 "command": "python",
                 "args": ["server.py"]
             },
+            "kafka": {
+                "command": "python",
+                "args": ["kafka_mcp_server.py"]
+            },
             "demo_math": {
                 "url": "http://localhost:9000/mcp"
             }
@@ -31,7 +35,7 @@ async def main():
 
     os.environ["OPENAI_API_KEY"] = "NA"
     model_name = 'incept5/llama3.1-claude:latest'
-    
+ 
     async with Client(config) as client:
         # List resources from all servers
         resources = await client.list_resources()
@@ -56,6 +60,29 @@ async def main():
             arguments={"name": "Alice"}
         )
         print(f"Prompt: {prompt_result.messages[0].content.text}")
+
+        # Consume messages from a topic
+        #messages = await kafka_consume_messages(
+        messages = await client.call_tool("kafka_kafka_consume_messages", {
+            "topic": "user-events",
+            "bootstrap_servers": "localhost:9092",
+            "max_messages": 10
+        })
+        print(messages)
+
+        # Peek at latest messages without committing
+        #peek_messages = await kafka_peek_messages(
+        peek_messages = await client.call_tool("kafka_kafka_peek_messages", {
+            "topic": "user-events",
+            "offset": "latest",
+            "max_messages": 5
+        })
+
+        # List available topics
+        #topics = await kafka_list_topics(bootstrap_servers="localhost:9092")
+        topics = await client.call_tool("kafka_kafka_list_topics", {
+            "bootstrap_servers": "localhost:9092"
+        })
 
 """
         # Might not ever run on a CPU

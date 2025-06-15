@@ -1,0 +1,38 @@
+## Copyright 2025 CannonJunior
+# This file is part of mcp_experiments, and is released under the "MIT License Agreement".
+# Please see the LICENSE.md file that should have been included as part of this package.
+
+# The is the Claude explainer text from creating kafka_consumer.py
+# Created: 2025.06.15
+
+## Prompt: Write a Python MCP server with FastMCP. The server's tool should reads json data from a KafkaConsumer.
+
+I've created a comprehensive Kafka MCP server using FastMCP. Here are the key features:
+Tools Provided:
+
+kafka_consume_messages - Consumes JSON messages from a Kafka topic
+
+Configurable timeout, max messages, bootstrap servers
+Automatic JSON deserialization
+Returns messages with full metadata (partition, offset, timestamp, etc.)
+
+
+kafka_peek_messages - Peeks at messages without committing offsets
+
+Useful for inspecting messages without affecting consumer groups
+Can specify partition and offset position
+
+
+kafka_list_topics - Lists available Kafka topics with partition information
+kafka_close_consumer - Closes specific consumers to free resources
+
+Additional Features:
+
+Resource: kafka://config - Shows active consumers and configuration
+Prompt: kafka_usage - Provides usage instructions
+Consumer Management: Automatically manages consumer lifecycle
+Error Handling: Comprehensive error handling for Kafka operations
+Graceful Shutdown: Properly closes consumers on server shutdown
+
+Installation Requirements:
+

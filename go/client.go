@@ -1,5 +1,5 @@
 // Copyright 2025 CannonJunior
-// This file is part of [project name], and is released under the "MIT License Agreement".
+// This file is part of mcp_experiments, and is released under the "MIT License Agreement".
 // Please see the LICENSE.md file that should have been included as part of this package.
 
 // Created: 2025.06.15

@@ -1,9 +1,14 @@
 ## Copyright 2025 CannonJunior
-# This file is part of [project name], and is released under the "MIT License Agreement".
+# This file is part of mcp_experiments, and is released under the "MIT License Agreement".
 # Please see the LICENSE.md file that should have been included as part of this package.
 
 # The is the Claude explainer text from creating client.go
 # Created: 2025.06.15
+
+## Prompt: Rewrite this Python <program> in Go:
+<program>
+contents from mcp_experiments/python/mcp/client.py
+</program>
 
 I'll convert this Python MCP client to Go. Since there isn't a direct Go equivalent of FastMCP, I'll create a Go client that can interact with MCP servers using HTTP requests and process management.
 
