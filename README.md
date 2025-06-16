@@ -1,9 +1,9 @@
-# Copyright 2025 CannonJunior
+Copyright 2025 CannonJunior
   
-# This file is part of mcp_experiments, and is released under the "MIT License Agreement".
-# Please see the LICENSE.md file that should have been included as part of this package.
-# Created: 2025.06.16
-# By: CannonJunior
+This file is part of mcp_experiments, and is released under the "MIT License Agreement".
+Please see the LICENSE.md file that should have been included as part of this package.
+Created: 2025.06.16
+By: CannonJunior
 
 ## TODO
 Ask Claude for a docker-compose for all dockers

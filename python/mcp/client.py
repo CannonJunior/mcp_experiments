@@ -30,12 +30,11 @@ async def main():
             "finance": {
                 "command": "python",
                 "args": ["finance_server.py"]
-            },
-            "demo_math": {
-                "url": "http://localhost:9000/mcp"
             }
         }
     }
+
+    # config['mcpServers']['demo_math'] = { "url": "http://localhost:9000/mcp" }
 
     os.environ["OPENAI_API_KEY"] = "NA"
     model_name = 'incept5/llama3.1-claude:latest'

@@ -9,8 +9,6 @@
 # Alternate usage: uv run finance_server.py
 
 from fastmcp import FastMCP
-from googlefinance import getQuotes
-from yahoo_finance import Share
 import yfinance as yf
 import json
 
