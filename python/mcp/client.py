@@ -27,6 +27,10 @@ async def main():
                 "command": "python",
                 "args": ["kafka_mcp_server.py"]
             },
+            "finance": {
+                "command": "python",
+                "args": ["finance_server.py"]
+            },
             "demo_math": {
                 "url": "http://localhost:9000/mcp"
             }
@@ -37,6 +41,10 @@ async def main():
     model_name = 'incept5/llama3.1-claude:latest'
  
     async with Client(config) as client:
+        # List tools from all servers
+        tools = await client.list_tools()
+        print(f"Tools: {[t.name for t in tools]}")
+
         # List resources from all servers
         resources = await client.list_resources()
         print(f"Resources: {[r.name for r in resources]}")
@@ -61,6 +69,14 @@ async def main():
         )
         print(f"Prompt: {prompt_result.messages[0].content.text}")
 
+        symbol = "AAPL"
+        finance_response = await client.call_tool("finance_get_quote", {
+            "symbol": symbol
+        })
+
+        print(f"finance_get_quote: {finance_response}")
+
+"""
         # Consume messages from a topic
         #messages = await kafka_consume_messages(
         messages = await client.call_tool("kafka_kafka_consume_messages", {
@@ -83,6 +99,7 @@ async def main():
         topics = await client.call_tool("kafka_kafka_list_topics", {
             "bootstrap_servers": "localhost:9092"
         })
+"""
 
 """
         # Might not ever run on a CPU

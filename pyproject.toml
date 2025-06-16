@@ -6,6 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastmcp>=2.8.0",
+    "googlefinance>=0.7",
     "kafka-python>=2.2.11",
     "ollama>=0.5.1",
+    "requests>=2.32.4",
+    "yahoo-finance>=1.4.0",
+    "yfinance>=0.2.63",
 ]

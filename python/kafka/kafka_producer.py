@@ -4,7 +4,7 @@
 # Please see the LICENSE.md file that should have been included as part of this package.
 # Created: 2025.06.15
 # By: CannonJunior with Google Gemini AI search results
-# Prompt): kafka topic python
+# Prompt: kafka topic python
 # Usage: uv run kafka_producer.py
 # Output: none
 

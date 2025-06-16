@@ -35,4 +35,34 @@ Error Handling: Comprehensive error handling for Kafka operations
 Graceful Shutdown: Properly closes consumers on server shutdown
 
 Installation Requirements:
+bashpip install fastmcp kafka-python
+Usage Examples:
+# Consume messages from a topic
+messages = await kafka_consume_messages(
+    topic="user-events",
+    bootstrap_servers="localhost:9092",
+    max_messages=10
+)
 
+# Peek at latest messages without committing
+peek_messages = await kafka_peek_messages(
+    topic="user-events",
+    offset="latest",
+    max_messages=5
+)
+
+# List available topics
+topics = await kafka_list_topics(bootstrap_servers="localhost:9092")
+
+Configuration:
+The server supports standard Kafka consumer configurations:
+
+Bootstrap servers (comma-separated)
+Consumer group IDs
+Auto-offset reset policies
+Custom timeouts and message limits
+
+To Run:
+python kafka_mcp_server.py
+
+The server will start and be ready to consume JSON data from your Kafka topics. It automatically handles consumer lifecycle management and provides a clean interface for MCP clients to interact with Kafka data streams.
