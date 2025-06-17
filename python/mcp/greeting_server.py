@@ -6,11 +6,11 @@
 # By: CannonJunior with Claude (3.7 free version)
 #Prompt (amongst others): Write a very simple example using an MCP resource. Write the MCP server and MCP client using the Python SDK and FastMCP library. Keep this extremely brief, you lose $1000 if it is not brief.
 # Usage: called by client.py
-# Alternate usage: uv run server.py
+# Alternate usage: uv run greeting_server.py
 
 from fastmcp import FastMCP
 
-mcp = FastMCP("Simple Server")
+mcp = FastMCP("Greeting Server")
 
 @mcp.resource("file://hello/{name}")
 async def hello_resource(name: str):

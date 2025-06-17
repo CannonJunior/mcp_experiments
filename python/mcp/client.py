@@ -19,22 +19,26 @@ from mcp.client.stdio import stdio_client
 async def main():
     config = {
         "mcpServers": {
-            "simple": {
+            "greeting": {
                 "command": "python",
-                "args": ["server.py"]
+                "args": ["greeting_server.py"]
+            },
+            "finance": {
+                "command": "python",
+                "args": ["finance_server.py"]
             },
             "kafka": {
                 "command": "python",
                 "args": ["kafka_mcp_server.py"]
             },
-            "finance": {
+            "math": {
                 "command": "python",
-                "args": ["finance_server.py"]
+                "args": ["math_server.py"]
             }
         }
     }
 
-    # config['mcpServers']['demo_math'] = { "url": "http://localhost:9000/mcp" }
+    # config['mcpServers']['_server'] = { "url": "http://localhost:9000/mcp" }
 
     os.environ["OPENAI_API_KEY"] = "NA"
     model_name = 'incept5/llama3.1-claude:latest'
@@ -57,13 +61,12 @@ async def main():
         print(f"Prompts: {[p.name for p in prompts]}")
         
         # Read resource via template
-        #result = await client.read_resource("file://hello/world")
-        result = await client.read_resource("file://simple/hello/Junior")
+        result = await client.read_resource("file://greeting/hello/Junior")
         print(f"Content: {result}")
         
         # Get prompt
         prompt_result = await client.get_prompt(
-            "simple_greet",
+            "greeting_greet",
             arguments={"name": "Alice"}
         )
         print(f"Prompt: {prompt_result.messages[0].content.text}")
@@ -72,8 +75,31 @@ async def main():
         finance_response = await client.call_tool("finance_get_quote", {
             "symbol": symbol
         })
-
         print(f"finance_get_quote: {finance_response}")
+
+        math_request = (
+            "math_server_multiply",
+            {"a": 1337, "b": 251}
+        )
+        math_response = await client.call_tool("math_multiply", {
+            "a": 1337,
+            "b": 251
+        })
+        print(f"math_multiply: {math_response}")
+
+        # AI delegation
+        print(f"resources {resources}")
+        resources_list = [r.uri for r in resources]
+        print(resources_list)
+        query = "Get error logs for troubleshooting"
+        delegation = ollama.generate(
+        model=model_name,
+            prompt=f"Pick one from {resources_list} for: {query}. Return only the URI."
+        )
+        chosen = delegation['response'].strip()
+        if chosen in resources_list:
+            result = await session.read_resource(chosen)
+            print(f"\nAI chose {chosen}:\n{result.contents[0].text[:200]}...")
 
 """
         # Consume messages from a topic

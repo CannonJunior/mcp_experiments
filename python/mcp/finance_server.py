@@ -3,7 +3,7 @@
 # This file is part of mcp_experiments, and is released under the "MIT License Agreement".
 # Please see the LICENSE.md file that should have been included as part of this package.
 # Created: 2025.06.16
-# By: CannonJunior, with Google
+# By: CannonJunior, with Google search
 # Prompt: python stock quote example
 # Usage: called by client.py
 # Alternate usage: uv run finance_server.py
