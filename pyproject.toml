@@ -10,6 +10,8 @@ dependencies = [
     "kafka-python>=2.2.11",
     "ollama>=0.5.1",
     "requests>=2.32.4",
+    "torch>=2.7.1",
+    "transformers>=4.52.4",
     "yahoo-finance>=1.4.0",
     "yfinance>=0.2.63",
 ]

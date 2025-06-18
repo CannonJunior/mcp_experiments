@@ -34,6 +34,10 @@ async def main():
             "math": {
                 "command": "python",
                 "args": ["math_server.py"]
+            },
+            "sentiment": {
+                "command": "python",
+                "args": ["sentiment_analysis_server.py"]
             }
         }
     }
@@ -86,6 +90,12 @@ async def main():
             "b": 251
         })
         print(f"math_multiply: {math_response}")
+
+        text_to_analyze = "This is the best day ever."
+        sentiment_response = await client.call_tool("sentiment_analyze_sentiment", {
+            "text": text_to_analyze
+        })
+        print(f"analyze_sentiment: {sentiment_response}")
 
         # AI delegation
         print(f"resources {resources}")
