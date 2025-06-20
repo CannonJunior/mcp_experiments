@@ -8,8 +8,19 @@ By: CannonJunior
 ## TODO
 Ask Claude for a docker-compose for all dockers
 - postgres with pgvector
-- apache/kafka server
-- kafka producer???
+
+## Investigations
+# Roast
+https://github.com/Shopify/roast
+
+# telemetry:
+https://coroot.com/blog/opentelemetry-for-go-measuring-the-overhead/
+
+# UI:
+https://metaduck.com/embedding-an-all-seeing-ai-agent/
+
+# LoRA:
+https://github.com/SakanaAI/text-to-lora
 
 ## postgres with pgvector
 # Install
