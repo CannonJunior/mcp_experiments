@@ -53,11 +53,13 @@ async def main():
 
         # Get prompt: Hook
         prompt_result = await client.get_prompt(
-            "chapter_hook",
+            "chapter_opening_hook",
             arguments={"premise": "Alice"}
         )
+        print()
         print(f"Prompt: {prompt_result.messages[0].content.text}")
-        print(prompt_result)
+        print()
+        print(f"prompt results: {prompt_result}")
 
         # Use prompt with ollama model
         response = ollama.chat(
@@ -67,7 +69,9 @@ async def main():
                 'content': f''' Take this prompt and generate an appropriate response: {prompt_result} '''
             }]
         )
+        print()
         print(f"Generated prompt response: {response}")
+        print()
 
         #text_response = await client.call_tool("text_chapter_hook", {
         #    "": symbol
